@@ -97,55 +97,55 @@ public struct Attributes {
 extension Attributes {
 
     public func lineSpacing(_ lineSpacing: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.lineSpacing = lineSpacing
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func paragraphSpacing(_ paragraphSpacing: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.paragraphSpacing =  paragraphSpacing
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func alignment(_ alignment: NSTextAlignment) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.alignment = alignment
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func firstLineHeadIndent(_ firstLineHeadIndent: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.firstLineHeadIndent = firstLineHeadIndent
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func headIndent(_ headIndent: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.headIndent = headIndent
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func tailIndent(_ tailIndent: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.tailIndent = tailIndent
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func lineBreakMode(_ lineBreakMode: NSLineBreakMode) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.lineBreakMode = lineBreakMode
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func minimumLineHeight(_ minimumLineHeight: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.minimumLineHeight = minimumLineHeight
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func maximumLineHeight(_ maximumLineHeight: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.maximumLineHeight = maximumLineHeight
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
@@ -155,26 +155,30 @@ extension Attributes {
     }
 
     public func baseWritingDirection(_ baseWritingDirection: NSWritingDirection) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.baseWritingDirection = baseWritingDirection
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func lineHeightMultiple(_ lineHeightMultiple: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func paragraphSpacingBefore(_ paragraphSpacingBefore: CGFloat) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
     }
 
     public func hyphenationFactor(_ hyphenationFactor: Float) -> Attributes {
-        let paragraphStyle = (dictionary[NSAttributedString.Key.paragraphStyle] ?? NSMutableParagraphStyle.default.mutableCopy()) as! NSMutableParagraphStyle
+        let paragraphStyle = (paragraphStyle ?? NSParagraphStyle.default).mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.hyphenationFactor = hyphenationFactor
         return self + Attributes(dictionary: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+    }
+
+    private var paragraphStyle: NSParagraphStyle? {
+        dictionary[NSAttributedString.Key.paragraphStyle] as? NSParagraphStyle
     }
 }

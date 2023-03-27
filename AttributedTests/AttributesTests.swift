@@ -103,4 +103,19 @@ class AttributesTests: XCTestCase {
         
         XCTAssert(smokeTestString == baseString, "Shadow functionality is broken")
     }
+
+    func testParagraphStyleNotShared() throws {
+        let attributesOriginal = Attributes {
+            $0.paragraphSpacing(16)
+        }
+
+        let attributesModified = attributesOriginal
+            .paragraphSpacing(4)
+
+        let paragraphStyleOriginal = try XCTUnwrap(attributesOriginal.dictionary[NSAttributedString.Key.paragraphStyle] as? NSParagraphStyle)
+        let paragraphStyleModified = try XCTUnwrap(attributesModified.dictionary[NSAttributedString.Key.paragraphStyle] as? NSParagraphStyle)
+
+        XCTAssertEqual(paragraphStyleOriginal.paragraphSpacing, 16)
+        XCTAssertEqual(paragraphStyleModified.paragraphSpacing, 4)
+    }
 }
